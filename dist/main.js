@@ -1314,6 +1314,7 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
 
 // src/main.ts
 var core = __toESM(require_core());
+var fs = __toESM(require("fs"));
 
 // src/wait.ts
 function wait(milliseconds) {
@@ -1328,7 +1329,6 @@ function wait(milliseconds) {
 }
 
 // src/main.ts
-var fs = __toESM(require("fs"));
 function run() {
   return __async(this, null, function* () {
     try {

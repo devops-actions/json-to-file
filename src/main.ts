@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
 import * as fs from 'fs'
+import {wait} from './wait'
 
 async function run(): Promise<void> {
   try {
@@ -15,7 +15,7 @@ async function run(): Promise<void> {
     core.debug(new Date().toTimeString())
     await wait(parseInt(ms, 10))
     core.debug(new Date().toTimeString())
-    
+
     fs.writeFileSync(fileName, json)
     core.info(`File written successfully`)
 
