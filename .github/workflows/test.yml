@@ -15,6 +15,7 @@ jobs:
           npm install
       - run: |
           npm run all
+
   test: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
     steps:
@@ -22,3 +23,5 @@ jobs:
       - uses: ./
         with:
           milliseconds: 1000
+          json: '{"test": "test"}'
+          filename: 'test.json'
