@@ -6,6 +6,12 @@ inputs:
     required: true
     description: 'input description here'
     default: 'default value if applicable'
+  json:
+    required: true
+    description: 'The json you want to store'
+  filename:
+    required: true
+    description: 'The filename you want to store the json in'
 runs:
   using: 'node16'
-  main: 'dist/index.js'
+  main: 'dist/main.js'
