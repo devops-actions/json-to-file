@@ -366,7 +366,7 @@ var require_tunnel = __commonJS({
         connectOptions.headers = connectOptions.headers || {};
         connectOptions.headers["Proxy-Authorization"] = "Basic " + new Buffer(connectOptions.proxyAuth).toString("base64");
       }
-      debug2("making CONNECT request");
+      debug("making CONNECT request");
       var connectReq = self.request(connectOptions);
       connectReq.useChunkedEncodingByDefault = false;
       connectReq.once("response", onResponse);
@@ -386,7 +386,7 @@ var require_tunnel = __commonJS({
         connectReq.removeAllListeners();
         socket.removeAllListeners();
         if (res.statusCode !== 200) {
-          debug2("tunneling socket could not be established, statusCode=%d", res.statusCode);
+          debug("tunneling socket could not be established, statusCode=%d", res.statusCode);
           socket.destroy();
           var error = new Error("tunneling socket could not be established, statusCode=" + res.statusCode);
           error.code = "ECONNRESET";
@@ -395,7 +395,7 @@ var require_tunnel = __commonJS({
           return;
         }
         if (head.length > 0) {
-          debug2("got illegal response body from proxy");
+          debug("got illegal response body from proxy");
           socket.destroy();
           var error = new Error("got illegal response body from proxy");
           error.code = "ECONNRESET";
@@ -403,13 +403,13 @@ var require_tunnel = __commonJS({
           self.removeSocket(placeholder);
           return;
         }
-        debug2("tunneling connection has established");
+        debug("tunneling connection has established");
         self.sockets[self.sockets.indexOf(placeholder)] = socket;
         return cb(socket);
       }
       function onError(cause) {
         connectReq.removeAllListeners();
-        debug2("tunneling socket could not be established, cause=%s\n", cause.message, cause.stack);
+        debug("tunneling socket could not be established, cause=%s\n", cause.message, cause.stack);
         var error = new Error("tunneling socket could not be established, cause=" + cause.message);
         error.code = "ECONNRESET";
         options.request.emit("error", error);
@@ -467,9 +467,9 @@ var require_tunnel = __commonJS({
       }
       return target;
     }
-    var debug2;
+    var debug;
     if (process.env.NODE_DEBUG && /\btunnel\b/.test(process.env.NODE_DEBUG)) {
-      debug2 = function() {
+      debug = function() {
         var args = Array.prototype.slice.call(arguments);
         if (typeof args[0] === "string") {
           args[0] = "TUNNEL: " + args[0];
@@ -479,10 +479,10 @@ var require_tunnel = __commonJS({
         console.error.apply(console, args);
       };
     } else {
-      debug2 = function() {
+      debug = function() {
       };
     }
-    exports.debug = debug2;
+    exports.debug = debug;
   }
 });
 
@@ -1236,11 +1236,11 @@ var require_core = __commonJS({
 Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
     }
     exports.getBooleanInput = getBooleanInput;
-    function setOutput2(name, value) {
+    function setOutput(name, value) {
       process.stdout.write(os.EOL);
       command_1.issueCommand("set-output", { name }, value);
     }
-    exports.setOutput = setOutput2;
+    exports.setOutput = setOutput;
     function setCommandEcho(enabled) {
       command_1.issue("echo", enabled ? "on" : "off");
     }
@@ -1254,10 +1254,10 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
       return process.env["RUNNER_DEBUG"] === "1";
     }
     exports.isDebug = isDebug;
-    function debug2(message) {
+    function debug(message) {
       command_1.issueCommand("debug", {}, message);
     }
-    exports.debug = debug2;
+    exports.debug = debug;
     function error(message, properties = {}) {
       command_1.issueCommand("error", utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
     }
@@ -1315,35 +1315,15 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
 // src/main.ts
 var core = __toESM(require_core());
 var fs = __toESM(require("fs"));
-
-// src/wait.ts
-function wait(milliseconds) {
-  return __async(this, null, function* () {
-    return new Promise((resolve) => {
-      if (isNaN(milliseconds)) {
-        throw new Error("milliseconds not a number");
-      }
-      setTimeout(() => resolve("done!"), milliseconds);
-    });
-  });
-}
-
-// src/main.ts
 function run() {
   return __async(this, null, function* () {
     try {
-      const ms = core.getInput("milliseconds");
       const json = core.getInput("json");
       const fileName = core.getInput("fileName");
-      core.debug(`Waiting ${ms} milliseconds ...`);
       core.info(`Found filename: ${fileName}`);
       core.info(`Found json: ${json}`);
-      core.debug(new Date().toTimeString());
-      yield wait(parseInt(ms, 10));
-      core.debug(new Date().toTimeString());
       fs.writeFileSync(fileName, json);
       core.info(`File written successfully`);
-      core.setOutput("time", new Date().toTimeString());
     } catch (error) {
       if (error instanceof Error)
         core.setFailed(error.message);

@@ -35,6 +35,7 @@ jobs:
         run: |
           npm run build
           npm run package
+          npm run esbuild
 
       - name: Compare the expected and actual dist/ directories
         run: |
