@@ -37,6 +37,13 @@ jobs:
           npm run package
           npm run esbuild
 
+      - name: Update dist folder on Dependabot PR
+        if: GITHUB_ACTOR == 'dependabot'
+        run: |
+          git add dist/*
+          git commit -m "Update dist"
+          git push origin main
+
       - name: Compare the expected and actual dist/ directories
         run: |
           if [ "$(git diff --ignore-space-at-eol dist/ | wc -l)" -gt "0" ]; then
