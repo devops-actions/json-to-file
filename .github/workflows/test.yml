@@ -25,3 +25,6 @@ jobs:
         with:
           json: '{"test": "test"}'
           filename: 'test.json'
+
+      - run: |
+          cat test.json
