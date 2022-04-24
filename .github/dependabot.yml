@@ -1,11 +1,11 @@
 version: 2
 updates:
   - package-ecosystem: github-actions
-    directory: /
+    directory: .github/workflows
     schedule:
-      interval: daily
+      interval: weekly
 
   - package-ecosystem: npm
     directory: /
     schedule:
-      interval: daily
+      interval: weekly
