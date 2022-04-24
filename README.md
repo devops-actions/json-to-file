@@ -1,5 +1,5 @@
 <p align="center">
-  [![build-test](https://github.com/devops-actions/json-to-file/actions/workflows/test.yml/badge.svg)](https://github.com/devops-actions/json-to-file/actions/workflows/test.yml)
+  ![build-test](https://github.com/devops-actions/json-to-file/actions/workflows/test.yml/badge.svg)
 </p>
 
 # Purpose
