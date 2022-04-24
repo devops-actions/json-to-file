@@ -45,7 +45,7 @@ jobs:
       
       - name: Get tag value
         id: tag
-        uses: dawidd6/action-get-tag@v1
+        uses: rajbos-actions/action-get-tag@v1
         
       - name: Use tag
         run: echo ${{ steps.tag.outputs.tag }}
