@@ -38,7 +38,7 @@ jobs:
           npm run esbuild
 
       - name: Update dist folder on Dependabot PR
-        if: GITHUB_ACTOR == 'dependabot'
+        if: ${{ github.actor }} == 'dependabot'
         run: |
           git add dist/*
           git commit -m "Update dist"
