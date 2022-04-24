@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/devops-actions/json-to-file/actions"><img alt="json-to-file action status" src="https://github.com/devops-actions/json-to-file/workflows/test/badge.svg"></a>
+  [![build-test](https://github.com/devops-actions/json-to-file/actions/workflows/test.yml/badge.svg)](https://github.com/devops-actions/json-to-file/actions/workflows/test.yml)
 </p>
 
 # Purpose

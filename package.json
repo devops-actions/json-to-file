@@ -6,12 +6,12 @@
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
-    "format": "prettier --write '**/*.ts'",
-    "format-check": "prettier --check '**/*.ts'",
+    "format": "prettier --write src/**.ts",
+    "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/**.ts",
-    "package": "ncc build --source-map --license licenses.txt",
     "test": "jest",
-    "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
+    "all_org": "npm run build && npm run format && npm run lint && npm run package && npm test",
+    "all": "npm run lint && npm run format && npm run esbuild",
     "esbuild": "esbuild src/main.ts --bundle --outdir=dist --platform=node"
   },
   "repository": {
