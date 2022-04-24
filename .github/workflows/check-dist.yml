@@ -42,16 +42,20 @@ jobs:
           npm run all
 
       - name: Update dist folder on Dependabot PR
-        if: ${{ github.actor }} === 'dependabot'
+        if: ${{ github.actor == 'dependabot' }}
         run: |
           echo "Actor: ${{ github.actor }}"
 
-          git config --global user.email "depenbabot@github.com"
-          git config --global user.name "Dependabot"
+          if [[ -z git status -s ]]; then
+            echo "There are uncommitted changes in the dist/ directory."
+            
+            git config --global user.email "depenbabot@github.com"
+            git config --global user.name "Dependabot"
 
-          git add dist/*
-          git commit -m "Update dist"
-          git push origin main
+            git add dist/*
+            git commit -m "Update dist"
+            git push origin main
+          fi
 
       - name: Compare the expected and actual dist/ directories
         run: |
