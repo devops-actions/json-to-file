@@ -32,10 +32,14 @@ jobs:
           json: '{"foo": "test"}'
           filename: 'test.json'
 
+      # todo: add test that checks with additional quotes in the value
       - shell: pwsh 
         name: test the file content       
         run: |
          $content = Get-Content -Path 'test.json'
+         Write-Host "Found this content in the file:"
+         Write-Host $content
+         
          $test = $content | ConvertFrom-Json
          if ($test.foo -eq 'test') {
             Write-Host "File found correct"
@@ -44,6 +48,3 @@ jobs:
             Write-Host "Found this json:"
             Write-Host $test | ConvertTo-Json
          }
-
-      - run: |
-          cat test.json
