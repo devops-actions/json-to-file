@@ -27,9 +27,23 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./
+        id: store-json
         with:
-          json: '{"test": "test"}'
+          json: '{"foo": "test"}'
           filename: 'test.json'
+
+      - shell: pwsh 
+        name: test the file content       
+        run: |
+         $content = Get-Content -Path 'test.json'
+         $test = $content | ConvertFrom-Json
+         if ($test.foo -eq 'test') {
+            throw "No actions found"
+         } 
+         else {
+            Write-Host "Found this json:"
+            Write-Host $test | ConvertTo-Json
+         }
 
       - run: |
           cat test.json
