@@ -38,7 +38,7 @@ jobs:
          $content = Get-Content -Path 'test.json'
          $test = $content | ConvertFrom-Json
          if ($test.foo -eq 'test') {
-            throw "No actions found"
+            Write-Host "File found correct"
          } 
          else {
             Write-Host "Found this json:"
