@@ -1,6 +1,9 @@
 name: 'json-to-file'
 description: 'Write json from variable to file'
 author: 'devops-actions'
+branding:
+  icon: file-text
+  color: orange
 inputs:  
   json:
     required: true
