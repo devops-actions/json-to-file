@@ -33,9 +33,7 @@ jobs:
 
       - name: Rebuild the dist/ directory
         run: |
-          npm run build
-          npm run package
-          npm run esbuild
+          npm run all
 
       - name: Update dist folder on Dependabot PR
         if: ${{ github.actor }} == 'dependabot'
