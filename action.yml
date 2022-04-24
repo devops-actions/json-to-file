@@ -1,4 +1,4 @@
-name: 'rajbos'
+name: 'json-to-file'
 description: 'Write json from variable to file'
 author: 'devops-actions'
 inputs:  
