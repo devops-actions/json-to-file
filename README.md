@@ -1,6 +1,5 @@
-<p align="center">
-  ![build-test](https://github.com/devops-actions/json-to-file/actions/workflows/test.yml/badge.svg)
-</p>
+[![build-test](https://github.com/devops-actions/json-to-file/actions/workflows/test.yml/badge.svg)](https://github.com/devops-actions/json-to-file/actions/workflows/test.yml)
+
 
 # Purpose
 Write JSON from to a file, without having to worry about string escaping on a bash script.
