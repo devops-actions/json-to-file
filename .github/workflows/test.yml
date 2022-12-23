@@ -5,6 +5,9 @@ on: # rebuild any PRs and main branch changes
     branches:
       - main
       - 'releases/*'
+      
+permissions:
+  read
 
 jobs:
   build: # make sure build/ci works properly
