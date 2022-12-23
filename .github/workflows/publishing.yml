@@ -11,7 +11,7 @@ jobs:
   test-local-action:
     runs-on: ubuntu-latest
     steps: 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
 
       - uses: ./
         name: json to file
@@ -33,7 +33,7 @@ jobs:
          }
             
       - name: Upload result file as artefact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@82c141cc518b40d92cc801eee768e7aafc9c2fa2 # v2.3.1
         with: 
           name: test
           path: test.json
@@ -47,12 +47,12 @@ jobs:
       
       - name: Get tag value
         id: tag
-        uses: rajbos-actions/action-get-tag@v1
+        uses: rajbos-actions/action-get-tag@12319896edaa290b27558e34a177804e9b8d077b # v1
         
       - name: Use tag
         run: echo ${{ steps.tag.outputs.tag }}
 
-      - uses: actions/create-release@v1
+      - uses: actions/create-release@0cb9c9b65d5d1901c1f53e5e66eaf4afd303e70e # v1.1.4
         id: create_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
@@ -72,7 +72,7 @@ jobs:
           #asset_name: my-artifact.zip
           #asset_content_type: application/zip
       
-      - uses: rajbos-actions/slack@v1
+      - uses: rajbos-actions/slack@e4e71685b9b239384b0f676a63c32367f59c2522 # v1.2.2
         with: 
           status: ${{ job.status }}
         env:
