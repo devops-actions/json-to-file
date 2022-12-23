@@ -1,3 +1,4 @@
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/devops-actions/json-to-file/badge)](https://api.securityscorecards.dev/projects/github.com/devops-actions/json-to-file)
 [![build-test](https://github.com/devops-actions/json-to-file/actions/workflows/test.yml/badge.svg)](https://github.com/devops-actions/json-to-file/actions/workflows/test.yml)
 
 
