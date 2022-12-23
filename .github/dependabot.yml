@@ -3,14 +3,9 @@ updates:
   - package-ecosystem: github-actions
     directory: .github/workflows
     schedule:
-      interval: weekly
+      interval: monthly
 
   - package-ecosystem: npm
-    directory: /
-    schedule:
-      interval: weekly
-
-  - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: monthly
