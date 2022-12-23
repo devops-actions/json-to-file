@@ -7,7 +7,7 @@ on: # rebuild any PRs and main branch changes
       - 'releases/*'
       
 permissions:
-  read
+  contents: read
 
 jobs:
   build: # make sure build/ci works properly
