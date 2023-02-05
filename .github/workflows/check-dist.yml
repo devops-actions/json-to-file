@@ -55,7 +55,7 @@ jobs:
         run: |
           echo "Actor: ${{ github.actor }}"
 
-          if [[ -z git status -s ]]; then
+          if [[ `git status --porcelain` ]]; then
             echo "There are uncommitted changes in the dist/ directory."
             
             git config --global user.email "depenbabot@github.com"
