@@ -45,6 +45,10 @@ jobs:
       - name: Rebuild the dist/ directory
         run: |
           npm run all
+          
+      - name: Double check Actor
+        run: | 
+          echo "Actor: ${{ github.actor }}"
 
       - name: Update dist folder on Dependabot PR
         if: ${{ github.actor == 'dependabot' }}
