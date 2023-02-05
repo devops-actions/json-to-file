@@ -5,7 +5,10 @@ on:
     tags:
       - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
-  workflow_dispatch:    
+  workflow_dispatch:  
+  
+permissions:
+  contents: read
     
 jobs:
   test-local-action:
