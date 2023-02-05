@@ -51,7 +51,7 @@ jobs:
           echo "Actor: ${{ github.actor }}"
 
       - name: Update dist folder on Dependabot PR
-        if: ${{ github.actor == 'dependabot' }}
+        if: ${{ github.actor == 'dependabot[bot]' }}
         run: |
           echo "Actor: ${{ github.actor }}"
 
