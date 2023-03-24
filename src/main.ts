@@ -1,5 +1,6 @@
 import * as core from '@actions/core'
 import * as fs from 'fs'
+import * as path from 'path'
 
 async function run(): Promise<void> {
   try {
@@ -9,7 +10,8 @@ async function run(): Promise<void> {
     core.info(`Found filename: ${fileName}`)
     core.info(`Found json: ${json}`)
 
-    fs.writeFileSync(fileName, json)
+    const filePath = path.resolve(fileName)
+    fs.writeFileSync(filePath, json)
     core.info(`File written successfully`)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
