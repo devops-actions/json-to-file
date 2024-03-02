@@ -9,3 +9,9 @@ updates:
     directory: /
     schedule:
       interval: monthly
+    groups:
+      - package-ecosystem: 'npm'
+        group-name: 'all-npm-updates'
+        packages:
+          - match:
+              dependency_type: 'all'
