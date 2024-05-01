@@ -12,5 +12,5 @@ inputs:
     required: true
     description: 'The filename you want to store the json in'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/main.js'
