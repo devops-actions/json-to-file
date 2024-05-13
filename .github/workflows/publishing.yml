@@ -14,7 +14,7 @@ jobs:
   test-local-action:
     runs-on: ubuntu-latest
     steps: 
-      - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
+      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
 
       - uses: ./
         name: json to file
@@ -36,7 +36,7 @@ jobs:
          }
             
       - name: Upload result file as artefact
-        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v2.3.1
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v2.3.1
         with: 
           name: test
           path: test.json
