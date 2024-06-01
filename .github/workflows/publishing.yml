@@ -50,7 +50,7 @@ jobs:
       
       - name: Get tag value
         id: tag
-        uses: devops-actions/action-get-tag@4e13c4ea459efa2988a10d5ff0f252bb097929ef # v1.0.1
+        uses: devops-actions/action-get-tag@19f393df16cb09284484fb49bf678004bf50896a # v1.0.1
         
       - name: Use tag
         run: echo ${{ steps.tag.outputs.tag }}
