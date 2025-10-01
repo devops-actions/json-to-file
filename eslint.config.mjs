@@ -38,8 +38,7 @@ export default [
       prettier: prettier
     },
     rules: {
-      // Basic ESLint recommended rules (manually selected to avoid structuredClone dependency)
-      'no-constant-binary-expression': 'error',
+      // Basic ESLint rules compatible with Node.js 16.x (avoiding newer rules that use structuredClone)
       'no-constant-condition': 'error',
       'no-control-regex': 'error',
       'no-debugger': 'error',
@@ -53,8 +52,6 @@ export default [
       'no-func-assign': 'error',
       'no-invalid-regexp': 'error',
       'no-irregular-whitespace': 'error',
-      'no-loss-of-precision': 'error',
-      'no-misleading-character-class': 'error',
       'no-prototype-builtins': 'error',
       'no-regex-spaces': 'error',
       'no-shadow-restricted-names': 'error',
@@ -64,7 +61,6 @@ export default [
       'no-unsafe-finally': 'error',
       'no-unsafe-negation': 'error',
       'no-unused-labels': 'error',
-      'no-useless-catch': 'error',
       'no-useless-escape': 'error',
       'no-with': 'error',
       'require-yield': 'error',
