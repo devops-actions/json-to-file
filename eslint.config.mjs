@@ -39,7 +39,6 @@ export default [
     },
     rules: {
       // Disable conflicting rules (no basic ESLint rules due to structuredClone compatibility issues in v9 + Node.js 16.x)
-      'i18n-text/no-en': 'off',
       'eslint-comments/no-use': 'off',
       'import/no-namespace': 'off',
       'no-unused-vars': 'off',
