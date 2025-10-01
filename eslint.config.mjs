@@ -38,36 +38,7 @@ export default [
       prettier: prettier
     },
     rules: {
-      // Basic ESLint rules compatible with Node.js 16.x (avoiding newer rules that use structuredClone)
-      'no-constant-condition': 'error',
-      'no-control-regex': 'error',
-      'no-debugger': 'error',
-      'no-dupe-args': 'error',
-      'no-dupe-keys': 'error',
-      'no-duplicate-case': 'error',
-      'no-empty': 'error',
-      'no-empty-character-class': 'error',
-      'no-ex-assign': 'error',
-      'no-extra-boolean-cast': 'error',
-      'no-func-assign': 'error',
-      'no-invalid-regexp': 'error',
-      'no-irregular-whitespace': 'error',
-      'no-prototype-builtins': 'error',
-      'no-regex-spaces': 'error',
-      'no-shadow-restricted-names': 'error',
-      'no-sparse-arrays': 'error',
-      'no-unexpected-multiline': 'error',
-      'no-unreachable': 'error',
-      'no-unsafe-finally': 'error',
-      'no-unsafe-negation': 'error',
-      'no-unused-labels': 'error',
-      'no-useless-escape': 'error',
-      'no-with': 'error',
-      'require-yield': 'error',
-      'use-isnan': 'error',
-      'valid-typeof': 'error',
-      
-      // Disable conflicting rules
+      // Disable conflicting rules (no basic ESLint rules due to structuredClone compatibility issues in v9 + Node.js 16.x)
       'i18n-text/no-en': 'off',
       'eslint-comments/no-use': 'off',
       'import/no-namespace': 'off',
