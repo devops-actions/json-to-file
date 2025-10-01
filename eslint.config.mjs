@@ -1,4 +1,3 @@
-import js from '@eslint/js';
 import typescript from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import jest from 'eslint-plugin-jest';
@@ -21,14 +20,14 @@ export default [
     files: ['src/**/*.ts', '__tests__/**/*.ts'],
     languageOptions: {
       parser: typescriptParser,
-      ecmaVersion: 9,
+      ecmaVersion: 2020,
       sourceType: 'module',
       parserOptions: {
         project: './tsconfig.json'
       },
       globals: {
         ...globals.node,
-        ...globals.es6,
+        ...globals.es2020,
         ...globals.jest
       }
     },
@@ -38,12 +37,6 @@ export default [
       prettier: prettier
     },
     rules: {
-      // Disable conflicting rules (no basic ESLint rules due to structuredClone compatibility issues in v9 + Node.js 16.x)
-      'eslint-comments/no-use': 'off',
-      'import/no-namespace': 'off',
-      'no-unused-vars': 'off',
-      'camelcase': 'off',
-      'semi': 'off',
       
       // TypeScript-specific rules
       '@typescript-eslint/no-unused-vars': 'error',
