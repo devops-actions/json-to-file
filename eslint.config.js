@@ -84,8 +84,6 @@ module.exports = [
   },
   {
     files: ['__tests__/**/*.ts'],
-    rules: {
-      ...jest.configs.recommended.rules
-    }
+    ...jest.configs['flat/recommended']
   }
 ];
