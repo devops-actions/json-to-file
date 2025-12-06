@@ -14,6 +14,11 @@ jobs:
   test-local-action:
     runs-on: ubuntu-latest
     steps: 
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@df199fb7be9f65074067a9eb93f12bb4c5547cf2 # v2.13.3
+        with:
+          egress-policy: audit
+
       - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
 
       - uses: ./
@@ -48,6 +53,11 @@ jobs:
       contents: write
     steps:
       
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@df199fb7be9f65074067a9eb93f12bb4c5547cf2 # v2.13.3
+        with:
+          egress-policy: audit
+
       - name: Get tag value
         id: tag
         uses: devops-actions/action-get-tag@19f393df16cb09284484fb49bf678004bf50896a # v1.0.1
