@@ -10,9 +10,6 @@ changelog:
     - title: Dependency updates (Other)
       labels:
         - dependencies
-      exclude:
-        labels:
-          - github_actions
     - title: Other Changes
       labels:
         - "*"
