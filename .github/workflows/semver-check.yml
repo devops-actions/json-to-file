@@ -21,4 +21,4 @@ jobs:
         with:
           fetch-depth: 0 # needed to get all tags
       
-      - uses: jessehouwing/actions-semver-checker@3743133883ebac6c0bce6a712c9d09801d52d850 # v1
+      - uses: jessehouwing/actions-semver-checker@6d03f353bc99898ba501da95fb2c866a9946a75e # v1
