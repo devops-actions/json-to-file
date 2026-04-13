@@ -9,7 +9,7 @@ test('test runs', () => {
   process.env['INPUT_JSON'] = '{"foo": "bar"}'
   process.env['INPUT_FILENAME'] = 'test.json'
   const np = process.execPath
-  const ip = path.join(__dirname, '..', 'lib', 'main.js')
+  const ip = path.join(__dirname, '..', 'dist', 'main.js')
   const options: cp.ExecFileSyncOptions = {
     env: process.env
   }
