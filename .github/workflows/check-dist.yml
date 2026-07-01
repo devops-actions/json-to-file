@@ -55,16 +55,16 @@ jobs:
         if: ${{ github.actor == 'dependabot[bot]' }}
         run: |
           echo "Actor: ${{ github.actor }}"
-
+ 
           if [[ $(git status --porcelain) ]]; then
             echo "There are uncommitted changes in the dist/ directory."
-            
+             
             git config --global user.email "depenbabot@github.com"
             git config --global user.name "Dependabot"
-
+ 
             git add dist/*
             git commit -m "Update dist"
-            git push origin main
+            git push origin HEAD:${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
           fi
 
       - name: Compare the expected and actual dist/ directories
