@@ -59,7 +59,7 @@ jobs:
           if [[ $(git status --porcelain) ]]; then
             echo "There are uncommitted changes in the dist/ directory."
              
-            git config --global user.email "depenbabot@github.com"
+            git config --global user.email "dependabot@github.com"
             git config --global user.name "Dependabot"
  
             git add dist/*
