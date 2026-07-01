@@ -64,7 +64,7 @@ jobs:
  
             git add dist/*
             git commit -m "Update dist"
-            git push origin HEAD:${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
+            git push origin "HEAD:${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
           fi
 
       - name: Compare the expected and actual dist/ directories
