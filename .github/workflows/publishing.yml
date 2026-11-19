@@ -45,49 +45,31 @@ jobs:
         with: 
           name: test
           path: test.json
-    
-  publish:
+
+  release:
+    name: Release with SBOM and attestations
     needs: test-local-action
-    runs-on: ubuntu-latest
+    # Creates the GitHub release for this tag with the action files, a source archive and
+    # SPDX/CycloneDX SBOMs attached, each with a verified artifact attestation.
     permissions:
-      contents: write
+      contents: write       # create the release and upload its assets
+      id-token: write       # Sigstore keyless signing for the attestations
+      attestations: write   # store the attestations
+    uses: devops-actions/.github/.github/workflows/rw-release-attestation.yml@b88953c2b5ba6cfc3048a7fb6d32dc78e1588c58 # main
+
+  notify:
+    needs: release
+    if: always()
+    runs-on: ubuntu-latest
     steps:
-      
-      - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@1d88384fd173af6ecb012dfd0264a306b711241a # v2.22.4
-        with:
-          egress-policy: audit
-
-      - name: Get tag value
-        id: tag
-        uses: devops-actions/action-get-tag@72a6a37ed663481e5b8f89c6ad4820cd572def8e # v1.0.1
-        
-      - name: Use tag
-        run: echo ${{ steps.tag.outputs.tag }}
-
-      - uses: actions/create-release@0cb9c9b65d5d1901c1f53e5e66eaf4afd303e70e # v1.1.4
-        id: create_release
+      - name: Show release result
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-          body: |
-            Release ${{ github.ref }} is available now
+          RESULT: ${{ needs.release.result }}
+          URL: ${{ needs.release.outputs.release-url }}
+        run: echo "Release $GITHUB_REF_NAME - $RESULT $URL"
 
-      # todo: figure out how this works with an action :-)
-      #- uses: actions/publish-release-asset@v2
-        #with:
-          #upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          #asset_path: ./my-artifact.zip
-          #asset_name: my-artifact.zip
-          #asset_content_type: application/zip
-      
       - uses: rajbos-actions/slack@ed1309ab9862e57e9e583e51c7889486b9a00b0f # v2.0.0
-        with: 
-          status: ${{ job.status }}
+        with:
+          status: ${{ needs.release.result }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: always()
